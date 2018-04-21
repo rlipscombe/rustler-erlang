@@ -115,3 +115,11 @@ provided to `mix new` earlier (but you could have overridden it with the
 
 `crate:` is (obviously) the name of your crate, as chosen when running
 `mix rustler.new` earlier.
+
+### Add stub `add` function
+
+The generated NIF exports (via `rustler_export_nifs!`) the `add` function. If you don't add a stub call in your Elixir code, you'll see the following warning when compiling:
+
+    The on_load function for module Elixir.Cow.Moo returned {:error, {:bad_lib, 'Function not found \'Elixir.Cow.Moo\':add/2'}}
+
+So, add the stub function.

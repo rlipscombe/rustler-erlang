@@ -19,4 +19,6 @@ end
 
 defmodule Cow.Moo do
   use Rustler, otp_app: :cow, crate: :cow_moo
+
+  def add(_x, _y), do: exit(:nif_not_loaded)
 end
