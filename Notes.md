@@ -1,5 +1,11 @@
 # Using Rustler with Erlang
 
+## Install Rust
+
+You'll need to install Rust. Use rustup:
+
+   curl https://sh.rustup.rs -sSf | sh
+
 ## Using Rustler with Elixir
 
 ### Generate a new Elixir project
