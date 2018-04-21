@@ -31,6 +31,10 @@ defmodule Cow.MixProject do
 
   defp rustler_crates do
     [
+      cow_moo: [
+        path: "native/cow_moo",
+        mode: (if Mix.env == :prod, do: :release, else: :debug)
+      ]
     ]
   end
 end

@@ -94,3 +94,9 @@ $ mix
 ```
 
 So add `rustler_crates`.
+
+```
+$ mix
+Compiling NIF crate :cow_moo (native/cow_moo)...
+    Finished dev [unoptimized + debuginfo] target(s) in 0.0 secs
+```
