@@ -37,3 +37,7 @@ Interactive Elixir (1.6.3) - press Ctrl+C to exit (type h() ENTER for help)
 iex(1)> Cow.hello
 :world
 ```
+
+### Add Rustler
+
+    {:rustler, "~> 0.16.0"}
