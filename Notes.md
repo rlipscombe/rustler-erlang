@@ -73,3 +73,7 @@ Library name (cow_moo) >
 * creating native/cow_moo/src/lib.rs
 Ready to go! See cow/native/cow_moo/README.md for further instructions.
 ```
+
+### Enable the :rustler mix compiler
+
+    compilers: [:rustler] ++ Mix.compilers()

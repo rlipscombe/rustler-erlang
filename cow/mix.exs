@@ -5,6 +5,7 @@ defmodule Cow.MixProject do
     [
       app: :cow,
       version: "0.1.0",
+      compilers: [:rustler | Mix.compilers()],
       elixir: "~> 1.6",
       start_permanent: Mix.env() == :prod,
       deps: deps()
