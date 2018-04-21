@@ -77,3 +77,14 @@ Ready to go! See cow/native/cow_moo/README.md for further instructions.
 ### Enable the :rustler mix compiler
 
     compilers: [:rustler] ++ Mix.compilers()
+
+### Add configuration to `rustler_crates`
+
+If you try to compile your project now, you'll get:
+
+```
+$ mix
+** (Mix) Missing required :rustler_crates option in mix.exs.
+```
+
+So add `rustler_crates`.
