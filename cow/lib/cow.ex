@@ -16,3 +16,7 @@ defmodule Cow do
     :world
   end
 end
+
+defmodule Cow.Moo do
+  use Rustler, otp_app: :cow, crate: :cow_moo
+end

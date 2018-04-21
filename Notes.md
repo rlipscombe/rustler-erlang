@@ -100,3 +100,18 @@ $ mix
 Compiling NIF crate :cow_moo (native/cow_moo)...
     Finished dev [unoptimized + debuginfo] target(s) in 0.0 secs
 ```
+
+### Loading the NIF
+
+```
+defmodule Cow.Moo do
+  use Rustler, otp_app: :cow, crate: :cow_moo
+end
+```
+
+`otp_app:` is the name of your Elixir application. This is usually the name you
+provided to `mix new` earlier (but you could have overridden it with the
+`--app` switch).
+
+`crate:` is (obviously) the name of your crate, as chosen when running
+`mix rustler.new` earlier.
