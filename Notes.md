@@ -41,3 +41,35 @@ iex(1)> Cow.hello
 ### Add Rustler
 
     {:rustler, "~> 0.16.0"}
+
+```
+$ mix deps.get
+Resolving Hex dependencies...
+Dependency resolution completed:
+  rustler 0.16.0
+* Getting rustler (Hex package)
+  Checking package (https://repo.hex.pm/tarballs/rustler-0.16.0.tar)
+  Using locally cached package
+roger@roger-pc:~/Source/rlipscombe/rustler-learnings/cow $ mix compile
+==> rustler
+Compiling 2 files (.erl)
+Compiling 6 files (.ex)
+Generated rustler app
+==> cow
+Compiling 1 file (.ex)
+Generated cow app
+```
+
+### Add a NIF
+
+```
+$ mix rustler.new
+This is the name of the Elixir module the NIF module will be registered to.
+Module name > Cow.Moo
+This is the name used for the generated Rust crate. The default is most likely fine.
+Library name (cow_moo) >
+* creating native/cow_moo/README.md
+* creating native/cow_moo/Cargo.toml
+* creating native/cow_moo/src/lib.rs
+Ready to go! See cow/native/cow_moo/README.md for further instructions.
+```
