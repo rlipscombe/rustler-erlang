@@ -1,5 +1,7 @@
 # Using Rustler with Erlang
 
+**[DRAFT]**
+
 ## Install Rust
 
 You'll need to install Rust. Use rustup:
@@ -162,6 +164,68 @@ world
 {ok,3}
 ```
 
+## From Erlang, then?
+
+### Create a new application
+
+```
+$ rebar3 new app name=coo
+===> Writing coo/src/coo_app.erl
+===> Writing coo/src/coo_sup.erl
+===> Writing coo/src/coo.app.src
+===> Writing coo/rebar.config
+===> Writing coo/.gitignore
+===> Writing coo/LICENSE
+===> Writing coo/README.md
+```
+
+### Create the NIF module
+
+Erlang NIFs assert that the calling module matches the expected name, so we're
+going to have to name our Erlang module using Elixir conventions. For now.
+
+```
+-module('Elixir.Cow.Moo').
+-on_load(on_load/0).
+-export([add/2]).
+
+-define(APPLICATION, coo).
+
+on_load() ->
+    SoPath = code:priv_dir(?APPLICATION) ++ "/native/" ++ "libcow_moo",
+    LoadData = 0,
+    erlang:load_nif(SoPath, LoadData).
+
+add(_A, _B) ->
+    erlang:nif_error(nif_not_loaded).
+```
+
+### Copy the Rust crate
+
+We'll figure out how to compile it later. For now, we'll just copy it.
+
+```
+$ cd coo
+$ mkdir -p priv/native
+$ cp ../cow/native/cow_moo/target/debug/libcow_moo.so priv/native/
+```
+
+### Try it
+
+```
+$ rebar3 shell
+===> Verifying dependencies...
+===> Compiling coo
+Erlang/OTP 20 [erts-9.3] [source] [64-bit] [smp:12:12] [ds:12:12:10] [async-threads:0] [hipe] [kernel-poll:false]
+
+Eshell V9.3  (abort with ^G)
+1> 'Elixir.Cow.Moo':add(1, 2).
+{ok,3}
+2>
+```
+
+Well, that appears to work.
+
 ## How does it work?
 
 ### What does `use Rustler` do?
@@ -173,9 +237,9 @@ The `use Rustler` invokes the `Rustler.__using__` macro, which results in
 something like the following:
 
 ```
--on_load(do_init/0).
+-on_load(on_load/0).
 
-do_init() ->
+on_load() ->
     OtpApp = cow,
     Crate = "cow_moo",
     SoPath = code:priv_dir(OtpApp) ++ "/native/" ++ Crate,
@@ -185,6 +249,8 @@ do_init() ->
 
 Note that, in Erlang/OTP, this must be _in_ a module; it can't be invoked at
 the prompt.
+
+### What does the mix plugin do?
 
 ## Other stuff
 
