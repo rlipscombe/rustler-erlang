@@ -185,3 +185,10 @@ do_init() ->
 
 Note that, in Erlang/OTP, this must be _in_ a module; it can't be invoked at
 the prompt.
+
+## Other stuff
+
+- [rust.mk](https://github.com/goertzenator/rust.mk) -- erlang.mk plugin for
+  compiling crates.
+- [erlang_nif-sys](https://github.com/goertzenator/erlang_nif-sys) -- rust
+  crate for creating NIFS. Rustler uses it.
