@@ -161,3 +161,27 @@ world
 2> 'Elixir.Cow.Moo':add(1, 2).
 {ok,3}
 ```
+
+## How does it work?
+
+### What does `use Rustler` do?
+
+In an *Erlang* module that invokes a NIF, we have to provide an `-on_load`
+attribute, and a bunch of placeholder functions.
+
+The `use Rustler` invokes the `Rustler.__using__` macro, which results in
+something like the following:
+
+```
+-on_load(do_init/0).
+
+do_init() ->
+    OtpApp = cow,
+    Crate = "cow_moo",
+    SoPath = code:priv_dir(OtpApp) ++ "/native/" ++ Crate,
+    LoadData = 0,   % I've never used it, assume zero.
+    erlang:load_nif(SoPath, LoadData).
+```
+
+Note that, in Erlang/OTP, this must be _in_ a module; it can't be invoked at
+the prompt.
