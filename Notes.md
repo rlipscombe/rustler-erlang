@@ -148,3 +148,16 @@ iex(1)> Cow.hello
 iex(2)> Cow.Moo.add 1, 2
 {:ok, 3}
 ```
+
+## Aside: Elixir from Erlang
+
+```
+$ ERL_LIBS=$HOME/.kiex/elixirs/elixir-1.6.4/lib/elixir/lib/:_build/dev/lib erl
+Erlang/OTP 20 [erts-9.3] [source] [64-bit] [smp:12:12] [ds:12:12:10] [async-threads:10] [hipe] [kernel-poll:false]
+
+Eshell V9.3  (abort with ^G)
+1> 'Elixir.Cow':hello().
+world
+2> 'Elixir.Cow.Moo':add(1, 2).
+{ok,3}
+```
