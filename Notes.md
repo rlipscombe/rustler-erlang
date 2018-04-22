@@ -6,6 +6,16 @@ You'll need to install Rust. Use rustup:
 
    curl https://sh.rustup.rs -sSf | sh
 
+## Use the correct Erlang and Elixir
+
+Assuming you've built Erlang with kerl, and Elixir with kiex (and if you
+haven't, why not?):
+
+```
+$ source ~/erlang/OTP-20.3.1/activate       # kerl
+$ source ~/.kiex/elixirs/elixir-1.6.4.env   # kiex
+```
+
 ## Using Rustler with Elixir
 
 ### Generate a new Elixir project
