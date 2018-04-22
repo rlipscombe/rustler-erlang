@@ -47,9 +47,9 @@ $ mix compile
 Compiling 1 file (.ex)
 Generated cow app
 $ iex -S mix
-Erlang/OTP 19 [erts-8.3] [source] [64-bit] [smp:12:12] [async-threads:10] [hipe] [kernel-poll:false]
+Erlang/OTP 20 [erts-9.3] [source] [64-bit] [smp:12:12] [ds:12:12:10] [async-threads:10] [hipe] [kernel-poll:false]
 
-Interactive Elixir (1.6.3) - press Ctrl+C to exit (type h() ENTER for help)
+Interactive Elixir (1.6.4) - press Ctrl+C to exit (type h() ENTER for help)
 iex(1)> Cow.hello
 :world
 ```
